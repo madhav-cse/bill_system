@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organization Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+<h2>Register New Organization</h2>
+<form id="orgForm" action="register" method="POST">
+  <label for="name">Organization Name:</label>
+  <input type="text" id="name" name="name" required>
+  <span class="error" id="nameError"></span><br><br>
+
+  <label for="address">Address:</label>
+  <textarea id="address" name="address" required></textarea>
+  <span class="error" id="addressError"></span><br><br>
+
+  <label for="gstin">GSTIN:</label>
+  <input type="text" id="gstin" name="gstin" pattern="^[0-9A-Z]{15}$">
+  <span class="error" id="gstinError"></span><br><br>
+
+  <label for="phno">Phone Number:</label>
+  <input type="text" id="phno" name="phno" pattern="^[0-9]{10}$" required>
+  <span class="error" id="phnoError"></span><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+  <span class="error" id="emailError"></span><br><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+  <span class="error" id="passwordError"></span><br><br>
+
+  <button type="submit">Register</button>
+</form>
+
+<script>
+  function validateForm() {
+    let valid = true;
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
+    const gstin = document.getElementById("gstin").value;
+    const phno = document.getElementById("phno").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Clear previous error messages
+    document.getElementById("nameError").innerText = "";
+    document.getElementById("addressError").innerText = "";
+    document.getElementById("gstinError").innerText = "";
+    document.getElementById("phnoError").innerText = "";
+    document.getElementById("emailError").innerText = "";
+    document.getElementById("passwordError").innerText = "";
+
+    // Name validation
+    if (name.trim() === "") {
+      document.getElementById("nameError").innerText = "Organization name is required.";
+      valid = false;
+    }
+
+    // Address validation
+    if (address.trim() === "") {
+      document.getElementById("addressError").innerText = "Address is required.";
+      valid = false;
+    }
+
+    // GSTIN validation
+    const gstinPattern = /^[0-9A-Z]{15}$/;
+    if (gstin && !gstinPattern.test(gstin)) {
+      document.getElementById("gstinError").innerText = "Invalid GSTIN format.";
+      valid = false;
+    }
+
+    // Phone number validation
+    const phnoPattern = /^[0-9]{10}$/;
+    if (!phnoPattern.test(phno)) {
+      document.getElementById("phnoError").innerText = "Phone number must be 10 digits.";
+      valid = false;
+    }
+
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      document.getElementById("emailError").innerText = "Invalid email format.";
+      valid = false;
+    }
+
+    // Password strength validation
+    const passwordStrength = checkPasswordStrength(password);
+    if (passwordStrength < 3) {
+      document.getElementById("passwordError").innerText = "Password must be at least 8 characters long and include a mix of letters, numbers, and special characters.";
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  function checkPasswordStrength(password) {
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[\W_]/.test(password)) strength++; // special characters
+
+    return strength;
+  }
+</script>
+</body>
+</html>

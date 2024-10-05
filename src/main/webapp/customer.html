@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Details Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: #555;
+    }
+
+    input[type="text"], input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group-inline {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .form-group-inline .form-group {
+      width: 48%;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Customer Details</h2>
+  <form action="new-customer" method="POST">
+    <div class="form-group">
+      <label for="name">Customer Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter customer name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="phno">Phone Number:</label>
+      <input type="tel" id="phno" name="phno" pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" required>
+    </div>
+
+    <div class="form-group">
+      <label for="street">Street:</label>
+      <input type="text" id="street" name="street" placeholder="Enter street" required>
+    </div>
+
+    <div class="form-group">
+      <label for="area">Area:</label>
+      <input type="text" id="area" name="area" placeholder="Enter area" required>
+    </div>
+
+    <div class="form-group">
+      <label for="landmark">Landmark:</label>
+      <input type="text" id="landmark" name="landmark" placeholder="Enter landmark (optional)">
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" placeholder="Enter city" required>
+    </div>
+
+    <div class="form-group">
+      <label for="pincode">Pincode:</label>
+      <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" placeholder="Enter 6-digit pincode" required>
+    </div>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>
