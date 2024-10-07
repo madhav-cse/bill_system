@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JwtUtil {
-    private static final String SECRET_KEY = "your_secret_key"; // Use a secure key
+    private static final String SECRET_KEY = "ssajeenikil1005gokulakshivanya"; // Use a secure key
 
     public static String generateToken(String username, String role, String org_id) {
         Map<String, Object> claims = new HashMap<>();
